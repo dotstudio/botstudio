@@ -1,6 +1,7 @@
-var Gitter = require('node-gitter');
+'use strict'
 
-var gitter = new Gitter(`TOKEN`);
+const Gitter = require('node-gitter');
+const gitter = new Gitter(process.env.TOKEN);
 
 // gitter.currentUser()
 // .then(function(user) {
@@ -13,6 +14,6 @@ var gitter = new Gitter(`TOKEN`);
 // });
 
 gitter.rooms.join('dotstudio/botstudio')
-.then(function(room) {
+.then((room) => {
   room.send('[BOT] Hello world!');
 });
