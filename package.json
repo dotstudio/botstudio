@@ -1,0 +1,23 @@
+{
+  "name": "ds-bot",
+  "version": "1.0.0",
+  "description": "## 概要",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dotstudio/botstudio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dotstudio/botstudio/issues"
+  },
+  "homepage": "https://github.com/dotstudio/botstudio#readme",
+  "dependencies": {
+    "node-gitter": "^1.2.11"
+  }
+}
