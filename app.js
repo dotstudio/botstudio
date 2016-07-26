@@ -2,18 +2,23 @@
 
 const Gitter = require('node-gitter');
 const gitter = new Gitter(process.env.TOKEN);
+const util = require('util');
 
-// gitter.currentUser()
-// .then(function(user) {
-//   console.log('You are logged in as:', user.username);
-//   user.rooms()
-//   user.repos()
-//   user.orgs()
-//   user.channels()
-  
-// });
+const ROOM_NAME = 'dotstudio/botstudio'; //todo 複数指定したい
+const connect_rooms = require('./lib/connect_rooms'); //roomへの接続
 
-gitter.rooms.join('dotstudio/botstudio')
-.then((room) => {
-  room.send('[BOT] Hello world!');
-});
+//todo 複数読み込みしたい
+const COMMANDS = {
+    ping: require('./scripts/ping')
+};
+
+//ルーティング
+function msgRouter(msg){
+  console.log('Message: ' + msg);
+  let core = {msg: JSON.parse(msg),gitter: gitter, ROOM_NAME: ROOM_NAME};
+  if(!util.isObject(core.msg.mentions[0])) return;
+  let command_name = core.msg.text.split(' ')[1];
+  if(command_name !== '') COMMANDS[command_name](core);
+}
+
+connect_rooms(gitter, ROOM_NAME, msgRouter);
