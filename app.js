@@ -9,7 +9,8 @@ const connect_rooms = require('./lib/connect_rooms'); //roomへの接続
 
 //todo 複数読み込みしたい
 const COMMANDS = {
-    ping: require('./scripts/ping')
+    ping: require('./scripts/ping'),
+    chacha: require('./scripts/chacha')
 };
 
 //ルーティング
