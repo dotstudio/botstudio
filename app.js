@@ -5,7 +5,7 @@ const gitter = new Gitter(process.env.TOKEN);
 const util = require('util');
 
 const BOT_NAME = 'dotstud-io'; //bot名
-const ROOM_NAME = 'dotstudio/botstudio'; //todo 複数指定したい
+const get_rooms = require('./lib/get_rooms');
 const connect_rooms = require('./lib/connect_rooms'); //roomへの接続
 
 //todo 複数読み込みしたい
@@ -15,14 +15,17 @@ const COMMANDS = {
 };
 
 //ルーティング
-function msgRouter(msg){
-  console.log('Message: ' + msg);
-  let core = {msg: JSON.parse(msg),gitter: gitter, ROOM_NAME: ROOM_NAME};
-  if(!util.isObject(core.msg.mentions[0])) return; // リプライがなかったらスルー
-  if(core.msg.mentions[0].screenName !== BOT_NAME) return; //ボット名に対してのリプじゃなかったらスルー
-  console.log(core.msg);
-  let command_name = core.msg.text.split(' ')[1];
-  if(command_name !== '') COMMANDS[command_name](core);
+function msgRouter(msg, roomId){
+  // console.log('Message: ' + msg);
+  let msgData = JSON.parse(msg);
+  if(!util.isObject(msgData.mentions[0])) return; // リプライがなかったらスルー
+  if(msgData.mentions[0].screenName !== BOT_NAME) return; //ボット名に対してのリプじゃなかったらスルー
+  let command_name = msgData.text.split(' ')[1];
+  if(command_name !== '') COMMANDS[command_name](roomId,msgData);
 }
 
-connect_rooms(gitter, ROOM_NAME, msgRouter);
+//すべてのRoomに接続
+get_rooms((room_ids)=>{
+  for(let roomid of room_ids) connect_rooms(gitter, roomid, msgRouter);
+});
+
