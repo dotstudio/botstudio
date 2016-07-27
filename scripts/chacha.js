@@ -1,9 +1,8 @@
 'use strict'
 
-module.exports = (core) => {
-    core.gitter.rooms.join(core.ROOM_NAME)
-    .then((room) => {
-        //コマンドが送られてきたら処理を書くところ
-        room.send('ちゃちゃまる');
-    });
+let sendMes = require('../lib/post_message');
+
+module.exports = (roomId,msg) => {
+    let sendText = 'ちゃちゃまる';
+    sendMes(roomId, sendText).then((body) => {console.log(body);});
 }

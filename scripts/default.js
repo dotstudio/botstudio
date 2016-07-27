@@ -5,7 +5,7 @@
 'use strict'
 
 let sendMes = require('../lib/post_message');
-let getOgp = require('../lib/get_ogp');
+let getOgp = require('./lib/get_ogp');
 
 module.exports = (roomId,msg) => {
     if(msg.urls.length > 0){
