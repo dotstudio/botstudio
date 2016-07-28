@@ -5,7 +5,6 @@
 'use strict'
 
 let CronJob = require('cron').CronJob;
-let sendMes = require('../lib/post_message');
 
 module.exports = (gitter) => {    
     //日報催促

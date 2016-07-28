@@ -5,8 +5,11 @@ const Gitter = require('node-gitter');
 const gitter = new Gitter(process.env.TOKEN);
 const get_rooms = require('./lib/get_rooms'); //roomのid一覧を取得
 const connect_rooms = require('./lib/connect_rooms'); //roomへの接続
-const CRONS = require('./cron/')(gitter); //定期実行処理
+
+require('./cron/')(gitter); //定期実行処理
+require('./webhook/')(gitter); //Webhook処理
 const COMMANDS = require('./lib/load_modules')(); //コマンドを一括で読み込む
+
 
 //すべてのRoomに接続
 get_rooms((room_ids) => {
