@@ -1,7 +1,7 @@
 'use strict'
 
 const Hapi = require('hapi');
-const PORT = 3003;
+const PORT = require('../../const').PORT;
 
 module.exports = (webhook) => {
     

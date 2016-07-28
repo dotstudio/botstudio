@@ -1,22 +1,21 @@
 'use strict'
 
-const BOT_NAME = 'dotstud-io'; //bot名
 const Gitter = require('node-gitter');
 const gitter = new Gitter(process.env.TOKEN);
+const BOT_NAME = require('./const').BOT_NAME; //bot名 TODO:API経由で取れそう
 const get_rooms = require('./lib/get_rooms'); //roomのid一覧を取得
 const connect_rooms = require('./lib/connect_rooms'); //roomへの接続
+const COMMANDS = require('./lib/load_modules')(); //コマンドを一括で読み込む
 
 require('./cron/')(gitter); //定期実行処理
 require('./webhook/')(gitter); //Webhook処理
-const COMMANDS = require('./lib/load_modules')(); //コマンドを一括で読み込む
-
 
 //すべてのRoomに接続
 get_rooms((room_ids) => {
   for(let roomid of room_ids) connect_rooms(gitter, roomid, msgRouter);
 });
 
-//ルーティング
+//チャットからのアクション実行 (コマンドのルーター)
 function msgRouter(msg, roomId){
   let msgData = JSON.parse(msg);
   let tmp = msgData.text.split(' ');

@@ -1,10 +1,15 @@
 'use strict'
 
-module.exports = () => {
+module.exports = (gitter) => {
     require('./lib/server')(webhook);
 
-    function webhook(payload) {
+    function webhook(request) {
         console.log('-----');
-        console.log(payload);
+        console.log(request);
+
+        gitter.rooms.join('n0bisuke')
+        .then((room) => {
+            room.send('testtest');
+        });
     }
 }
