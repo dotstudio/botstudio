@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dotstudio/botstudio#readme",
   "dependencies": {
     "cron": "^1.1.0",
+    "hapi": "^13.5.0",
     "node-gitter": "^1.2.11",
     "request": "^2.74.0"
   }
