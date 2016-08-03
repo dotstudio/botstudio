@@ -20,7 +20,7 @@ module.exports = (gitter) => {
                     console.log(mes);
                     // room.send(mes);
                     // room.send('デプロイ完了。 Botが進化しました。');
-                    _selfReload('dsbot'); //botプログラムの再起動!
+                    _selfReload('dsbot'); //botプログラムの再起動
                 })
             });
 
@@ -41,10 +41,10 @@ function _selfReload(name) {
         }
 
         pm2.restart({name: name}, (err, apps) => {
-            console.log('再起動します。\n\n');
             pm2.disconnect();   // Disconnect from PM2
             if (err) throw err;
             // console.log(apps);
+            // console.log('再起動します。\n\n');
         });
     });
 }
