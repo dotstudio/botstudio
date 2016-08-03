@@ -13,6 +13,7 @@ require('./webhook/')(gitter); //Webhook処理
 //すべてのRoomに接続
 get_rooms((room_ids) => {
   for(let roomid of room_ids) connect_rooms(gitter, roomid, msgRouter);
+  console.log('ROOM接続完了');
 });
 
 //チャットからのアクション実行 (コマンドのルーター)

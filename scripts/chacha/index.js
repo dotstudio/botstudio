@@ -1,8 +1,8 @@
 'use strict'
 
-let sendMes = require('../lib/post_message');
+let sendMes = require('../../lib/post_message');
 
 module.exports = (roomId,msg) => {
-    let sendText = 'pong :facepunch: ';
+    let sendText = 'ちゃちゃまる';
     sendMes(roomId, sendText).then((body) => {console.log(body);});
 }

@@ -21,6 +21,7 @@
   "dependencies": {
     "cron": "^1.1.0",
     "hapi": "^13.5.0",
+    "milkcocoa": "^0.6.0",
     "node-gitter": "^1.2.11",
     "request": "^2.74.0"
   }
