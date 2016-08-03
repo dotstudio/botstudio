@@ -10,7 +10,7 @@ module.exports = (roomId,msg) => {
     let sendText = '';
     let sendUser = msg.fromUser.username;
     let tmp = msg.text.split(' ');
-    console.log(tmp);
+    // console.log(tmp);
     if(sendUser !== 'n0bisuke'){
         sendText += `君には${tmp[1]}権限がないよ`;
     }
@@ -20,11 +20,18 @@ module.exports = (roomId,msg) => {
         sendText += add(tmp[3]);
     }else if(subCmd === 'list'){
         sendText += list();
+    }else if(subCmd === 'block'){
+        sendText += block('on');
     }else{
         sendText += 'ハハッ';
     }
 
     // sendMes(roomId, sendText).then((body) => {console.log(body);});
+}
+
+//予約投稿を一時的にブロックする
+function block(params) {
+    DB.updateBlock('on');
 }
 
 //予約する
@@ -34,7 +41,9 @@ function add(options) {
    let date = tmp[1];
    let time = tmp[2];
    let mes = `${postId}を${date}の${time}に予約しました。`;
+
    DB.addReservations(mes);
+
    return mes;
 }
 
@@ -42,6 +51,8 @@ function add(options) {
 function list() {
     let mes = '予約一覧\n';
     mes += DB.listReservations();
+
     console.log(mes);
+
     return mes;
 }
