@@ -7,9 +7,10 @@ module.exports = (gitter) => {
         console.log('-----');
         console.log(request);
 
-        gitter.rooms.join('n0bisuke')
+        gitter.rooms.join('dotstudio/botstudio')
         .then((room) => {
-            room.send('testtest');
+            room.send('デプロイ完了。 Botが進化しました。');
         });
     }
+
 }

@@ -28,9 +28,11 @@ module.exports = (gitter) => {
     //deploy: testサーバにあるものをpullしてdeploy
     new CronJob('00 45 18 * * 1-5', () => {
         console.log('デプロイスタート...');
+        let command = 'cd web-test && git pull origin master && git push special master';
+
         gitter.rooms.join('dotstudio/ds-bot')
         .then((room) => {
-            deploy((mes)=>{
+            deploy(command, (mes)=>{
                 console.log(mes);
                 room.send(mes);
             })

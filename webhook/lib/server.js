@@ -18,6 +18,15 @@ module.exports = (webhook) => {
     });
 
     server.route({
+        method: 'POST',
+        path:'/botstudio',
+        handler: (request, reply) => {
+            reply().code(204);
+            webhook(request);
+        }
+    });
+
+    server.route({
         method: 'GET',
         path:'/',
         handler: (request, reply) => {
