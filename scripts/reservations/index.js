@@ -21,18 +21,20 @@ module.exports = (roomId,msg) => {
     }else if(subCmd === 'list'){
         sendText += list();
     }else if(subCmd === 'block'){
-        sendText += block('on');
+        sendText += changeBlock('on');
+    }else if(subCmd === 'unblock'){
+        sendText += changeBlock('off');
     }else{
         sendText += 'ハハッ';
     }
 
-    // sendMes(roomId, sendText).then((body) => {console.log(body);});
+    sendMes(roomId, sendText).then((body) => {console.log(body);});
 }
 
 //予約投稿を一時的にブロックする
-function block(params) {
-    DB.updateBlock('on');
-    return '予約投稿を一時的にブロックしました。';
+function changeBlock(flag) {
+    DB.updateBlock(flag);
+    return `予約投稿のブロックを一時的に${flag}にしました。`;
 }
 
 //予約する
