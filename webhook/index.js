@@ -43,7 +43,8 @@ function _selfReload(name) {
         pm2.restart({name: name}, (err, apps) => {
             pm2.disconnect();   // Disconnect from PM2
             if (err) throw err;
-            // console.log(apps);
+            console.log(apps);
+            console.log('再起動します。\n\n');
         });
     });
 }
