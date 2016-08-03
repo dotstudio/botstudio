@@ -4,12 +4,11 @@ const deploy = require('../commons/deploy');
 
 module.exports = (gitter) => {
     require('./lib/server')(webhook);
-
     function webhook(request,type) {
         //console.log(request);
         if(type === 'bot-deploy'){
             
-            console.log('デプロイスタート...');
+            console.log('デプロイスタート...!');
             let command = 'git pull origin master';
 
             gitter.rooms.join('dotstudio/botstudio')
