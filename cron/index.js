@@ -33,7 +33,7 @@ module.exports = (gitter) => {
             return;
         }
 
-        console.log('定期デプロイスタート...');
+        console.log('定期デプロイスタート..');
         let command = 'cd web-test && git pull origin master && git push special master';
 
         gitter.rooms.join('dotstudio/ds-bot')
