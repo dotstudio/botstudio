@@ -27,7 +27,12 @@ module.exports = (gitter) => {
     }, () => {},true,TIME_ZONE);
 
     //deploy: testサーバにあるものをpullして -> 本番deploy
-    new CronJob('00 40 19 * * 1-5', () => {
+    new CronJob('00 04 04 * * 1-5', () => {
+        if(DB.checkBlock() === 'on'){
+            console.log('予約投稿時間ですがブロックされました。');
+            return;
+        }
+
         console.log('デプロイスタート...');
         let command = 'cd web-test && git pull origin master && git push special master';
 
