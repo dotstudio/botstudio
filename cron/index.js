@@ -27,7 +27,7 @@ module.exports = (gitter) => {
     }, () => {},true,TIME_ZONE);
 
     //deploy: testサーバにあるものをpullして -> 本番deploy
-    new CronJob('00 58 09 * * 1-5', () => {
+    new CronJob('00 59 09 * * 1-5', () => {
         if(DB.checkBlock() === 'on'){
             console.log('予約投稿時間ですがブロックされました。');
             return;
