@@ -4,7 +4,7 @@ const exec = require('child_process').exec;
 
 module.exports = (command, cb) => {
     exec(command, (error, stdout, stderr) => {
-        let mes = '\n\n';
+        let mes = '\n';
         if (error != null) {
             mes += 'デプロイに失敗しました!\n'+'`'+error+'`';
         }else{
