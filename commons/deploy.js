@@ -1,10 +1,10 @@
 'use strict'
 
 const exec = require('child_process').exec;
-let mes = '';
 
 module.exports = (command, cb) => {
     exec(command, (error, stdout, stderr) => {
+        let mes = '';
         if (error != null) {
             mes += 'デプロイに失敗しました!\n'+'`'+error+'`';
         }else{
