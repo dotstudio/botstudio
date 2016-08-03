@@ -6,6 +6,8 @@ module.exports = (gitter) => {
     require('./lib/server')(webhook);
     function webhook(request,type) {
         //console.log(request);
+
+        //Bot自体の自動デプロイ -> DevRel-ubuntuへ
         if(type === 'bot-deploy'){
             
             console.log('デプロイスタート...!');
@@ -14,8 +16,9 @@ module.exports = (gitter) => {
             gitter.rooms.join('dotstudio/botstudio')
             .then((room) => {
                 deploy(command, (mes) => {
-                    room.send(mes);
-                    room.send('デプロイ完了。 Botが進化しました。');
+                    console.log(mes);
+                    // room.send(mes);
+                    // room.send('デプロイ完了。 Botが進化しました。');
                 })
             });
 
