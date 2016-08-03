@@ -3,3 +3,4 @@ node_modules
 _playground
 web-test
 data.json
+npm-debug.log
