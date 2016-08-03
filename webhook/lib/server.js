@@ -36,6 +36,6 @@ module.exports = (webhook) => {
     });
 
     server.start(() => {
-        console.log('Server running at:', server.info.uri);
+        console.log('Hello! Server running at:', server.info.uri);
     });
 }
