@@ -6,9 +6,9 @@ let mes = '';
 module.exports = (command, cb) => {
     exec(command, (error, stdout, stderr) => {
         if (error != null) {
-            mes += 'デプロイに失敗しました!\n'+'```'+error+'```';
+            mes += 'デプロイに失敗しました!\n'+'```\n'+error+'\n```';
         }else{
-            mes += 'デプロイ成功!\n'+'```'+stdout+'```';
+            mes += 'デプロイ成功!\n'+'```\n'+stdout+'\n```';
         }
 
         cb(mes);
