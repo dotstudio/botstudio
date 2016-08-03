@@ -20,7 +20,7 @@ module.exports = (gitter) => {
                     console.log(mes);
                     // room.send(mes);
                     // room.send('デプロイ完了。 Botが進化しました。');
-                    _selfReload('dsbot'); //botプログラムの再起動
+                    _selfReload('dsbot'); //botプログラムの再起動!
                 })
             });
 
