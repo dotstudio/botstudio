@@ -13,7 +13,7 @@ module.exports = (webhook) => {
         path:'/',
         handler: (request, reply) => {
             reply().code(204);
-            webhook(request);
+            webhook(request,'');
         }
     });
 
@@ -22,7 +22,7 @@ module.exports = (webhook) => {
         path:'/botstudio',
         handler: (request, reply) => {
             reply().code(204);
-            webhook(request);
+            webhook(request,'bot-deploy');
         }
     });
 
@@ -31,7 +31,7 @@ module.exports = (webhook) => {
         path:'/',
         handler: (request, reply) => {
             reply().code(204);
-            webhook(request);
+            webhook(request,'');
         }
     });
 
