@@ -17,15 +17,15 @@ module.exports = (roomId,msg) => {
 
     let subCmd = tmp[2];
     if(subCmd === 'add'){
-        sendText += add(tmp[3]);
+        sendText = add(tmp[3]);
     }else if(subCmd === 'list'){
-        sendText += list();
+        sendText = list();
     }else if(subCmd === 'block'){
-        sendText += changeBlock('on');
+        sendText = changeBlock('on');
     }else if(subCmd === 'unblock'){
-        sendText += changeBlock('off');
+        sendText = changeBlock('off');
     }else{
-        sendText += 'ハハッ';
+        sendText = 'ハハッ';
     }
 
     sendMes(roomId, sendText).then((body) => {console.log(body);});
