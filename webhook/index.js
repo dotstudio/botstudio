@@ -11,7 +11,7 @@ module.exports = (gitter) => {
         if(type === 'bot-deploy'){
             
             console.log('デプロイスタート...!');
-            let command = 'git pull origin master';
+            let command = 'git stash && git pull origin master';
 
             gitter.rooms.join('dotstudio/botstudio')
             .then((room) => {
