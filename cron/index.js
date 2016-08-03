@@ -7,6 +7,7 @@
 const CronJob = require('cron').CronJob;
 const TIME_ZONE = 'Asia/Tokyo';
 const deploy = require('../commons/deploy'); //deploy
+const DB = require('../lib/storage'); //ストレージ
 
 module.exports = (gitter) => {    
     //日報催促
@@ -19,10 +20,10 @@ module.exports = (gitter) => {
 
     //ゴミ出し催促
     new CronJob('00 55 18 * * 0,3', () => {
-        gitter.rooms.join('dotstudio/botstudio')
+        gitter.rooms.join('dotstudio/ds-bot')
         .then((room) => {
             room.send('@/all 明日は燃えるゴミの日ですよ！');
-        }); 
+        });
     }, () => {},true,TIME_ZONE);
 
     //deploy: testサーバにあるものをpullして -> 本番deploy
@@ -36,6 +37,18 @@ module.exports = (gitter) => {
                 console.log(mes);
                 room.send(mes);
             })
+        });
+
+    }, () => {},true,TIME_ZONE);
+
+    //予約投稿ブロックがonの場合、ブロックを解除
+    new CronJob('00 00 12 * * 1-5', () => {
+        if(DB.checkBlock() === 'off') return;
+
+        DB.updateBlock('off');
+        gitter.rooms.join('dotstudio/ds-bot')
+        .then((room) => {
+            room.send('ブロッキング解除');
         });
 
     }, () => {},true,TIME_ZONE);

@@ -32,6 +32,7 @@ module.exports = (roomId,msg) => {
 //予約投稿を一時的にブロックする
 function block(params) {
     DB.updateBlock('on');
+    return '予約投稿を一時的にブロックしました。';
 }
 
 //予約する
