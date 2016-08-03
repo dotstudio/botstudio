@@ -25,8 +25,8 @@ module.exports = (gitter) => {
         }); 
     }, () => {},true,TIME_ZONE);
 
-    //deploy: testサーバにあるものをpullしてdeploy
-    new CronJob('00 45 18 * * 1-5', () => {
+    //deploy: testサーバにあるものをpullして -> 本番deploy
+    new CronJob('00 40 19 * * 1-5', () => {
         console.log('デプロイスタート...');
         let command = 'cd web-test && git pull origin master && git push special master';
 
@@ -37,6 +37,7 @@ module.exports = (gitter) => {
                 room.send(mes);
             })
         });
+
     }, () => {},true,TIME_ZONE);
 
 }
