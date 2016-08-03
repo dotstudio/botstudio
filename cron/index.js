@@ -27,13 +27,13 @@ module.exports = (gitter) => {
     }, () => {},true,TIME_ZONE);
 
     //deploy: testサーバにあるものをpullして -> 本番deploy
-    new CronJob('00 31 04 * * 1-5', () => {
+    new CronJob('00 00 10 * * 1-5', () => {
         if(DB.checkBlock() === 'on'){
             console.log('予約投稿時間ですがブロックされました。');
             return;
         }
 
-        console.log('デプロイスタート...');
+        console.log('定期デプロイスタート...');
         let command = 'cd web-test && git pull origin master && git push special master';
 
         gitter.rooms.join('dotstudio/ds-bot')
