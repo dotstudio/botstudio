@@ -11,7 +11,7 @@ module.exports = (gitter) => {
         //Bot自体の自動デプロイ -> DevRel-ubuntuへ
         if(type === 'bot-deploy'){
             
-            console.log('Bot自身のデプロイスタート...');
+            console.log('Bot自身のデプロイスタート...!');
             let command = 'git stash && git pull origin master';
 
             gitter.rooms.join('dotstudio/botstudio')
