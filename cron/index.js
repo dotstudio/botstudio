@@ -26,7 +26,7 @@ module.exports = (gitter) => {
     }, () => {},true,TIME_ZONE);
 
     //deploy: testサーバにあるものをpullしてdeploy
-    new CronJob('00 00 17 * * 1-5', () => {
+    new CronJob('00 07 18 * * 1-5', () => {
         console.log('デプロイスタート...');
         gitter.rooms.join('dotstudio/ds-bot')
         .then((room) => {
