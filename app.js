@@ -6,7 +6,6 @@ const BOT_NAME = require('./const').BOT_NAME; //bot名 TODO:API経由で取れ�
 const get_rooms = require('./lib/get_rooms'); //roomのid一覧を取得
 const connect_rooms = require('./lib/connect_rooms'); //roomへの接続
 const COMMANDS = require('./lib/load_modules')(); //コマンドを一括で読み込む
-
 require('./cron/')(gitter); //定期実行処理
 require('./webhook/')(gitter); //Webhook処理
 
