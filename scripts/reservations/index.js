@@ -24,6 +24,8 @@ module.exports = (roomId,msg) => {
         sendText = changeBlock('on');
     }else if(subCmd === 'unblock'){
         sendText = changeBlock('off');
+    }else if(subCmd === 'set'){
+        sendText = set(tmp[3]);
     }else{
         sendText = 'ハハッ';
     }
@@ -58,4 +60,16 @@ function list() {
     console.log(mes);
 
     return mes;
+}
+
+// 19:00:00  -> 00 00 19
+function set(plan) {
+    let tmp = plan.split(':');
+    if(tmp.length !== 2){
+        console.log('フォーマットエラー');
+        return;
+    }
+
+    plan = `${tmp[2]} ${tmp[1]} ${tmp[0]} * * 1-5`;
+    DB.setSchedule(plan);
 }
