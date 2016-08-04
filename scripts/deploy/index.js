@@ -9,7 +9,7 @@ module.exports = (roomId,msg) => {
     let sendUser = msg.fromUser.username;
     let tmp = msg.text.split(' ');
     // console.log(tmp);
-    if(sendUser !== 'n0bisuke'){
+    if(sendUser !== 'n0bisuke' || sendUser !== 'uraranbon'){
         sendText += `君には${tmp[1]}権限がないよ`;
         sendMes(roomId, mes).then((body) => {console.log(body);});
         return;
