@@ -1,7 +1,7 @@
 'use strict'
 
 const deploy = require('../commons/deploy');
-const pm2 = require('pm2');
+const self_reload = require('../commons/self_reload');
 
 module.exports = (gitter) => {
     require('./lib/server')(webhook);
@@ -20,7 +20,7 @@ module.exports = (gitter) => {
                     console.log(mes);
                     // room.send(mes);
                     // room.send('デプロイ完了。 Botが進化しました。');
-                    _selfReload('dsbot'); //botプログラムの再起動
+                    self_reload('dsbot'); //botプログラムの再起動
                 })
             });
 
@@ -29,21 +29,4 @@ module.exports = (gitter) => {
         }
     }
 
-}
-
-//自身を再起動
-function _selfReload(name) {
-    pm2.connect((err) => {
-
-        if (err) {
-            console.error(err);
-            process.exit(2);
-        }
-        console.log('再起動するよ!\n\n');
-        pm2.restart({name: name, watch:false}, (err, apps) => {
-            pm2.disconnect();   // Disconnect from PM2
-            if (err) throw err;
-            // console.log(apps);
-        });
-    });
 }
