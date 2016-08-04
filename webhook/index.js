@@ -23,9 +23,16 @@ module.exports = (gitter) => {
                 })
             });
 
-        }else if(type === ''){
-            //別の何か
         }
+        
+        //本番デプロイした時の通知
+        else if(type === 'production'){
+            gitter.rooms.join('dotstudio/ds-bot')
+            .then((room) => {
+                room.send('本番環境にデプロイしました！');
+            });
+        }
+
     }
 
 }

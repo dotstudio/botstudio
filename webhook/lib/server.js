@@ -27,6 +27,15 @@ module.exports = (webhook) => {
     });
 
     server.route({
+        method: 'POST',
+        path:'/dotstudio',
+        handler: (request, reply) => {
+            reply().code(204);
+            webhook(request,'production');
+        }
+    });
+
+    server.route({
         method: 'GET',
         path:'/',
         handler: (request, reply) => {
