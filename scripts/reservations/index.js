@@ -65,7 +65,8 @@ function list() {
 // 19:00:00  -> 00 00 19
 function set(plan) {
     let tmp = plan.split(':');
-    if(tmp.length !== 2){
+    console.log(tmp.length);
+    if(tmp.length !== 3){
         console.log('フォーマットエラー');
         return;
     }
