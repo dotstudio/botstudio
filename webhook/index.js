@@ -39,7 +39,7 @@ function _selfReload(name) {
             console.error(err);
             process.exit(2);
         }
-        pm2.restart({name: name}, (err, apps) => {
+        pm2.restart({name: name, watch:false}, (err, apps) => {
             pm2.disconnect();   // Disconnect from PM2
             if (err) throw err;
             // console.log(apps);
