@@ -4,6 +4,7 @@
 
 const sendMes = require('../../lib/post_message');
 const DB = require('../../lib/storage'); //ストレージ
+const self_reload = require('../../commons/self_reload'); //リロード
 DB.init();
 
 module.exports = (roomId,msg) => {
@@ -73,4 +74,5 @@ function set(plan) {
 
     plan = `${tmp[2]} ${tmp[1]} ${tmp[0]} * * 1-5`;
     DB.setSchedule(plan);
+    self_reload();
 }
