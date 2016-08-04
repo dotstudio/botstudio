@@ -25,7 +25,7 @@ module.exports = (webhook) => {
             webhook(request,'bot-deploy');
         }
     });
-
+    
     server.route({
         method: 'POST',
         path:'/dotstudio',
