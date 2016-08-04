@@ -7,7 +7,6 @@ module.exports = (gitter) => {
     require('./lib/server')(webhook);
     function webhook(request,type) {
         //console.log(request);
-
         //Bot自体の自動デプロイ -> DevRel-ubuntuへ
         if(type === 'bot-deploy'){
             
