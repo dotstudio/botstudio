@@ -10,8 +10,7 @@ module.exports = () => {
             console.error(err);
             process.exit(2);
         }
-
-        console.log('再起動するよ!\n\n');
+        console.log('再起動するよ!\n');
         pm2.restart({name: pm2name, watch:false}, (err, apps) => {
             pm2.disconnect();   // Disconnect from PM2
             if (err) throw err;
