@@ -8,7 +8,7 @@ if(!process.env.GOOGLEAPI_ID){
 const gaAnalytics = require("ga-analytics");
 const CLIENT_ID = process.env.GOOGLEAPI_ID;
 const SERVICE_ACCOUNT_EMAIL = 'dotstduio-ga@nodejs-test-1318.iam.gserviceaccount.com';
-const SERVICE_ACCOUNT_KEY_FILE = '~/dotstudio/botstudio/key.pem';
+const SERVICE_ACCOUNT_KEY_FILE = '/home/n0bisuke/dotstudio/botstudio/key.pem';
 const VIEW_ID = 122411513;
 const METRICS = 'pageviews'; 
 
