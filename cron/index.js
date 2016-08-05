@@ -59,18 +59,14 @@ module.exports = (gitter) => {
 
     }, () => {},true,TIME_ZONE);
 
-
     //GA情報
-    new CronJob('00 00 1４ * * 1-5', () => {
-
+    new CronJob('00 00 14 * * 1-5', () => {
         ga((pv) => {
             gitter.rooms.join('dotstudio/ds-bot')
             .then((room) => {
                 room.send(`dotstudioの月間PV数は${pv}です。`);
             });
         })
-
-
     }, () => {},true,TIME_ZONE);
 
 }
