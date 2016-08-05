@@ -8,6 +8,7 @@ const CronJob = require('cron').CronJob;
 const TIME_ZONE = 'Asia/Tokyo';
 const deploy = require('../commons/deploy'); //deploy
 const DB = require('../lib/storage'); //ストレージ
+const ga = require('../commons/ga'); //GA
 
 module.exports = (gitter) => {    
     //日報催促
@@ -60,12 +61,15 @@ module.exports = (gitter) => {
 
 
     //GA情報
-    new CronJob('00 00 12 * * 1-5', () => {
+    new CronJob('00 00 1４ * * 1-5', () => {
 
-        // gitter.rooms.join('dotstudio/ds-bot')
-        // .then((room) => {
-        //     room.send('ブロッキング解除');
-        // });
+        ga((pv) => {
+            gitter.rooms.join('dotstudio/ds-bot')
+            .then((room) => {
+                room.send(`dotstudioの月間PV数は${pv}です。`);
+            });
+        })
+
 
     }, () => {},true,TIME_ZONE);
 
