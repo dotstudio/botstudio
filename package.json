@@ -20,6 +20,7 @@
   "homepage": "https://github.com/dotstudio/botstudio#readme",
   "dependencies": {
     "cron": "^1.1.0",
+    "ga-analytics": "0.0.7",
     "hapi": "^13.5.0",
     "milkcocoa": "^0.6.0",
     "node-gitter": "^1.2.11",

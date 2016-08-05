@@ -58,4 +58,15 @@ module.exports = (gitter) => {
 
     }, () => {},true,TIME_ZONE);
 
+
+    //GA情報
+    new CronJob('00 00 12 * * 1-5', () => {
+
+        // gitter.rooms.join('dotstudio/ds-bot')
+        // .then((room) => {
+        //     room.send('ブロッキング解除');
+        // });
+
+    }, () => {},true,TIME_ZONE);
+
 }
